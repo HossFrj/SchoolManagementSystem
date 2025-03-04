@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SMSystem.Core.RequestResponse\SMSystem.Core.RequestResponse.csproj" />
     <ProjectReference Include="..\..\src\4.EndPoints\Zamin.EndPoints.Web\Zamin.EndPoints.Web.csproj" />
     <ProjectReference Include="..\smsystem.app.client\smsystem.app.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
