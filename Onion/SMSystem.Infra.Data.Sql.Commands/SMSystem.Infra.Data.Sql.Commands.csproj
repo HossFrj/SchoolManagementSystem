@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Zamin.Extensions.Events.Outbox.Dal.EF" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMSystem.Core.Contracts\SMSystem.Core.Contracts.csproj" />
+    <ProjectReference Include="..\SMSystem.Core.Domain\SMSystem.Core.Domain.csproj" />
+    <ProjectReference Include="..\src\3.Infra\Data\Zamin.Infra.Data.Sql.Commands\Zamin.Infra.Data.Sql.Commands.csproj" />
+  </ItemGroup>
+
+</Project>

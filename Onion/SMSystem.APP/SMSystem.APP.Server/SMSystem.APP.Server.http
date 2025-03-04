@@ -1,0 +1,6 @@
+@SMSystem.APP.Server_HostAddress = http://localhost:5263
+
+GET {{SMSystem.APP.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
