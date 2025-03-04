@@ -12,8 +12,8 @@ namespace SMSystem.APP.Server.Suedents
     {
         #region Commands
 
-        [HttpDelete("Get")]
-        public async Task<IActionResult> Excel([FromBody] GetStudentCommand command) => await Excel(command);
+        [HttpGet("Get")]
+        public async Task<IActionResult> GetStudents(List<GetStudentCommand> command) => Ok(await Task.FromResult(command));
 
         [HttpPost("Create")]
         public async Task<IActionResult> CreateBlog([FromBody] CreateStudentCommand command) => await Create<CreateStudentCommand, Guid>(command);
