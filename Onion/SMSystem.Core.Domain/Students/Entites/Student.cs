@@ -1,13 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Zamin.Core.Domain.Entities;
-
-namespace SMSystem.Core.Domain.Students.Entites
+﻿namespace SMSystem.Core.Domain.Students.Entites
 {
     public class Student : AggregateRoot<int>
     {
-        //[Key]
-        //public Guid StudentID { get; set; } = Guid.NewGuid();
-
+        #region Properties
         [Required]
         [StringLength(20)]
         public string? SSN { get; set; }
@@ -19,6 +14,25 @@ namespace SMSystem.Core.Domain.Students.Entites
         [Required]
         [StringLength(50)]
         public string? LastName { get; set; }
+        #endregion
+
+        #region Constructors
+        private Student()
+        {
+
+        }
+        public Student(SNN ssn, FirstName firstName, LastName lastName)
+        {
+            SSN = ssn;
+            FirstName = firstName;
+            LastName = lastName;
+            AddEvent(new BlogCreated(BusinessId.Value, Title.Value, Description.Value));
+        }
+        #endregion
+
+        #region Commands
+
+        #endregion
 
     }
 }
