@@ -1,10 +1,16 @@
 ﻿using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using SMSystem.APP.Server.CustomDecorators;
+using SMSystem.Core.Contracts.Students.Commands;
+using SMSystem.Core.Contracts.Students.Queries;
+using SMSystem.Core.RequestResponse.Students.Commands.Create;
 using SMSystem.Infra.Data.Sql.Commands.Common;
+using SMSystem.Infra.Data.Sql.Commands.Students;
 using Zamin.Core.ApplicationServices.Commands;
 using Zamin.Core.ApplicationServices.Events;
 using Zamin.Core.ApplicationServices.Queries;
+using Zamin.Core.Contracts.ApplicationServices.Commands;
 using Zamin.EndPoints.Web.Extensions.ModelBinding;
 using Zamin.Extensions.DependencyInjection;
 using Zamin.Infra.Data.Sql.Commands.Interceptors;
@@ -45,7 +51,7 @@ public static class HostingExtensions
         builder.Services.AddZaminAutoMapperProfiles(configuration, "AutoMapper");
 
         //zamin
-         builder.Services.AddZaminInMemoryCaching();
+        builder.Services.AddZaminInMemoryCaching();
         //builder.Services.AddZaminSqlDistributedCache(configuration, "SqlDistributedCache");
 
         //CommandDbContext
@@ -54,8 +60,8 @@ public static class HostingExtensions
             .AddInterceptors(new SetPersianYeKeInterceptor(),
                              new AddAuditDataInterceptor()));
 
-        //QueryDbContext
-        //builder.Services.AddDbContext<MiniblogQueryDbContext>(
+       // QueryDbContext
+        //builder.Services.AddDbContext<SmSystemStudentQueryDbContext>(
         //    c => c.UseSqlServer(configuration.GetConnectionString("QueryDb_ConnectionString")));
 
         //PollingPublisher
@@ -83,7 +89,7 @@ public static class HostingExtensions
         app.UseZaminApiExceptionHandler();
 
         //Serilog
-        //app.UseSerilogRequestLogging();
+        app.UseSerilogRequestLogging();
 
         // app.UseSwaggerUI("Swagger");
 

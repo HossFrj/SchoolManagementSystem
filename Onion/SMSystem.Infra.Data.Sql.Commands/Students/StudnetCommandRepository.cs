@@ -6,10 +6,10 @@ using SMSystem.Core.Contracts.Students.Commands;
 
 namespace SMSystem.Infra.Data.Sql.Commands.Students
 {
-    public class StudnetCommandRepository : BaseCommandRepository<Student, SMSystemCommandDbContext, int>,
+    public class StudentCommandRepository : BaseCommandRepository<Student, SMSystemCommandDbContext, int>,
         IStudentCommandRepository
     {
-        public StudnetCommandRepository(SMSystemCommandDbContext dbContext) : base(dbContext)
+        public StudentCommandRepository(SMSystemCommandDbContext dbContext) : base(dbContext)
         {
         }
     }

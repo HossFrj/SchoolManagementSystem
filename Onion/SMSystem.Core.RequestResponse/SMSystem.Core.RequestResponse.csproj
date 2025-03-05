@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Zamin.Extensions.Translations.Abstractions" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\src\2.Core\Zamin.Core.RequestResponse\Zamin.Core.RequestResponse.csproj" />
   </ItemGroup>
 
