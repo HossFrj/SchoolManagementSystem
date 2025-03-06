@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiniSMSystem.Core.RequestResponse.Students.Commands.Delete;
 using SMSystem.Core.RequestResponse.Students.Commands.Create;
+using SMSystem.Core.RequestResponse.Students.Commands.Delete;
 using SMSystem.Core.RequestResponse.Students.Commands.Update;
 using SMSystem.Core.RequestResponse.Students.Queries;
 using SMSystem.Core.RequestResponse.Students.Queries.GetAll;
@@ -31,8 +31,8 @@ namespace SMSystem.APP.Server.Suedents
         [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteBlog([FromBody] DeleteStudentCommand command) => await Delete(command);
 
-        [HttpGet("GetById")]
-        public async Task<IActionResult> GetById(GetAllStudentByQuery query) => await Query<GetAllStudentByQuery, StudentQr?>(query);
+        //[HttpGet("GetById")]
+        //public async Task<IActionResult> GetById(GetAllStudentByQuery query) => await Query<GetAllStudentByQuery, StudentQr?>(query);
         #endregion
 
 

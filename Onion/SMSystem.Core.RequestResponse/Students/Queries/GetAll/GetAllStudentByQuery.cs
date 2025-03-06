@@ -10,7 +10,7 @@ namespace SMSystem.Core.RequestResponse.Students.Queries.GetAll
 {
     public class GetAllStudentByQuery : IQuery<StudentQr?>, IWebRequest
     {
-        public int StudentId { get; set; }
+        //public int StudentId { get; set; }
 
         public string Path => "/api/Student/GetById";
     }

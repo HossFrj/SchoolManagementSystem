@@ -7,21 +7,21 @@ using Zamin.Utilities;
 
 namespace SMSystem.Core.ApplicationService.Students.Queries.GetAll
 {
-    public class GetStudentAllQueryHandler  : QueryHandler<GetAllStudentByQuery, StudentQr?>
-    {
-        private readonly IStuedntQueryRepository _studentQueryRepository;
+    //public class GetStudentAllQueryHandler  : QueryHandler<GetAllStudentByQuery, StudentQr?>
+    //{
+    //    private readonly IStuedntQueryRepository _studentQueryRepository;
 
-        public GetStudentAllQueryHandler(ZaminServices zaminServices,
-                                       IStuedntQueryRepository studentQueryRepository) : base(zaminServices)
-        {
-            _studentQueryRepository = studentQueryRepository;
-        }
+    //    public GetStudentAllQueryHandler(ZaminServices zaminServices,
+    //                                   IStuedntQueryRepository studentQueryRepository) : base(zaminServices)
+    //    {
+    //        _studentQueryRepository = studentQueryRepository;
+    //    }
 
-        public override async Task<QueryResult<StudentQr?>> Handle(GetAllStudentByQuery query)
-        {
-            var blog = await _studentQueryRepository.ExecuteAsync(query);
+    //    public override async Task<QueryResult<StudentQr?>> Handle(GetAllStudentByQuery query)
+    //    {
+    //        var blog = await _studentQueryRepository.ExecuteAsync(query);
 
-            return Result(blog);
-        }
-    }
+    //        return Result(blog);
+    //    }
+    //}
 }
