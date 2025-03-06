@@ -2,15 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using SMSystem.APP.Server.CustomDecorators;
-using SMSystem.Core.Contracts.Students.Commands;
-using SMSystem.Core.Contracts.Students.Queries;
-using SMSystem.Core.RequestResponse.Students.Commands.Create;
 using SMSystem.Infra.Data.Sql.Commands.Common;
-using SMSystem.Infra.Data.Sql.Commands.Students;
+using SMSystem.Infra.Data.Sql.Queries.Common;
 using Zamin.Core.ApplicationServices.Commands;
 using Zamin.Core.ApplicationServices.Events;
 using Zamin.Core.ApplicationServices.Queries;
-using Zamin.Core.Contracts.ApplicationServices.Commands;
 using Zamin.EndPoints.Web.Extensions.ModelBinding;
 using Zamin.Extensions.DependencyInjection;
 using Zamin.Infra.Data.Sql.Commands.Interceptors;
@@ -60,9 +56,9 @@ public static class HostingExtensions
             .AddInterceptors(new SetPersianYeKeInterceptor(),
                              new AddAuditDataInterceptor()));
 
-       // QueryDbContext
-        //builder.Services.AddDbContext<SmSystemStudentQueryDbContext>(
-        //    c => c.UseSqlServer(configuration.GetConnectionString("QueryDb_ConnectionString")));
+        // QueryDbContext
+        builder.Services.AddDbContext<SMSystemQueryDbContext>(
+            c => c.UseSqlServer(configuration.GetConnectionString("QueryDb_ConnectionString")));
 
         //PollingPublisher
         //builder.Services.AddZaminPollingPublisherDalSql(configuration, "PollingPublisherSqlStore");

@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\SMSystem.Core.ApplicationService\SMSystem.Core.ApplicationService.csproj" />
     <ProjectReference Include="..\..\SMSystem.Core.RequestResponse\SMSystem.Core.RequestResponse.csproj" />
     <ProjectReference Include="..\..\SMSystem.Infra.Data.Sql.Commands\SMSystem.Infra.Data.Sql.Commands.csproj" />
+    <ProjectReference Include="..\..\SMSystem.Infra.Data.Sql.Queries\SMSystem.Infra.Data.Sql.Queries.csproj" />
     <ProjectReference Include="..\..\src\4.EndPoints\Zamin.EndPoints.Web\Zamin.EndPoints.Web.csproj" />
     <ProjectReference Include="..\smsystem.app.client\smsystem.app.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

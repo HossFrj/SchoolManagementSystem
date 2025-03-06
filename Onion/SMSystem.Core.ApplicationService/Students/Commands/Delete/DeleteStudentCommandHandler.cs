@@ -17,11 +17,11 @@ public sealed class DeleteStudnetCommandHandler(ZaminServices zaminServices,
 
     public override async Task<CommandResult> Handle(DeleteStudentCommand command)
     {
-        var blog = await _studentCommandRepository.GetGraphAsync(command.Id) ?? throw new InvalidEntityStateException("کاربر یافت نشد");
-        
-        blog.Delete();
+        var student = await _studentCommandRepository.GetGraphAsync(command.Id) ?? throw new InvalidEntityStateException("کاربر یافت نشد");
 
-        _studentCommandRepository.Delete(blog);
+        student.Delete();
+
+        _studentCommandRepository.Delete(student);
 
         await _studentCommandRepository.CommitAsync();
 

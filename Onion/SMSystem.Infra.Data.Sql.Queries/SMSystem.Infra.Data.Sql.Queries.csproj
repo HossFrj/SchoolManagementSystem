@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMSystem.Core.Contracts\SMSystem.Core.Contracts.csproj" />
+    <ProjectReference Include="..\SMSystem.Infra.Data.Sql.Commands\SMSystem.Infra.Data.Sql.Commands.csproj" />
+    <ProjectReference Include="..\src\3.Infra\Data\Zamin.Infra.Data.Sql.Queries\Zamin.Infra.Data.Sql.Queries.csproj" />
+  </ItemGroup>
+
+</Project>
