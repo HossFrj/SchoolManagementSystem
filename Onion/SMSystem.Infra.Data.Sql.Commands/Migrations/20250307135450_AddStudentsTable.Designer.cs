@@ -12,7 +12,7 @@ using SMSystem.Infra.Data.Sql.Commands.Common;
 namespace SMSystem.Infra.Data.Sql.Commands.Migrations
 {
     [DbContext(typeof(SMSystemCommandDbContext))]
-    [Migration("20250304214224_AddStudentsTable")]
+    [Migration("20250307135450_AddStudentsTable")]
     partial class AddStudentsTable
     {
         /// <inheritdoc />
@@ -44,9 +44,11 @@ namespace SMSystem.Infra.Data.Sql.Commands.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedByUserId")
@@ -56,8 +58,9 @@ namespace SMSystem.Infra.Data.Sql.Commands.Migrations
                     b.Property<DateTime?>("ModifiedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SSN")
-                        .HasColumnType("int");
+                    b.Property<string>("SSN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

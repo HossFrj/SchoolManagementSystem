@@ -39,7 +39,7 @@ const LogList = () : JSX.Element=> {
             <Table striped highlightOnHover withTableBorder mt={50}>
                 <Table.Thead>
                     <Table.Tr>
-                        <Table.Th>ID</Table.Th>
+                        <Table.Th>ID Log</Table.Th>
                         <Table.Th>زمان</Table.Th>
                         <Table.Th>جدول</Table.Th>
                         <Table.Th>نوع عملیات</Table.Th>

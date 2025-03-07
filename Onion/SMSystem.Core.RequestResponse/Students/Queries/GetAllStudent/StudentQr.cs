@@ -6,5 +6,5 @@ public class StudentQr
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
 
-    public int SSN { get; set; }
+    public string? SSN { get; set; }
 }

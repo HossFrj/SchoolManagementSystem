@@ -1,19 +1,19 @@
 ﻿using SMSystem.Core.Domain.Students.Events;
+using System.ComponentModel.DataAnnotations;
 using Zamin.Core.Domain.Entities;
-using Zamin.Core.Domain.Exceptions;
 
 namespace SMSystem.Core.Domain.Students.Entites
 {
     public class Student : AggregateRoot<int>
     {
         #region Properties
-        public int SSN { get; set; }
+        [Required]
+        public string SSN { get; set; } = string.Empty;
+        [Required]
 
-        public string? FirstName { get; set; }
-
-        //[Required]
-        //[StringLength(50)]
-        public string? LastName { get; set; }
+        public string FirstName { get; set; } = string.Empty;
+        [Required]
+        public string LastName { get; set; } = string.Empty;
         #endregion
 
         #region Constructors
@@ -21,7 +21,7 @@ namespace SMSystem.Core.Domain.Students.Entites
         {
 
         }
-        public Student(int ssn, string firstName, string lastName)
+        public Student(string ssn, string firstName, string lastName)
         {
             SSN = ssn;
             FirstName = firstName;
@@ -31,9 +31,9 @@ namespace SMSystem.Core.Domain.Students.Entites
         #endregion
 
         #region Commands
-        public static Student Create(int ssn, string firstName, string lastName) => new(ssn, firstName, lastName);
+        public static Student Create(string ssn, string firstName, string lastName) => new(ssn, firstName, lastName);
 
-        public void Update(int ssn, string firstName, string lastName)
+        public void Update(string ssn, string firstName, string lastName)
         {
             SSN = ssn;
             FirstName = firstName;

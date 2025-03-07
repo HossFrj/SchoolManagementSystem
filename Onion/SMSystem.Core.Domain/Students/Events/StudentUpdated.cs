@@ -3,6 +3,6 @@
 namespace SMSystem.Core.Domain.Students.Events;
 
 public record StudentUpdated(Guid BusinessId,
-    int ssn,
+    string ssn,
     string firstName,
     string lastName) : IDomainEvent;

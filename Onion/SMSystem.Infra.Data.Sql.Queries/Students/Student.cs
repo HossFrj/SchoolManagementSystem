@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string LastName { get; set; } = null!;
         public string FirstName { get; set; } = null!;
-        public int SSN { get; set; }
+        public string SSN { get; set; } = null!;
         public DateTime? CreatedDateTime { get; set; }
         public string? ModifiedByUserId { get; set; }
         public DateTime? ModifiedDateTime { get; set; }

@@ -9,7 +9,7 @@ import axios from "axios";
 
 interface Student {
     id: number;
-    ssn: number;
+    ssn: string;
     firstName: string;
     lastName: string;
 }
@@ -21,9 +21,8 @@ interface Student {
     const [editModalOpened, {open: openEditModal, close: closeEditModal}] = useDisclosure(false);
     const [deleteModalOpened, {open: openDeleteModal, close: closeDeleteModal}] = useDisclosure(false);
 
-    // state فرم افزودن دانش‌آموز جدید
     const [newStudent, setNewStudent] = useState<Omit<Student, "id">>({
-        ssn: 0,
+        ssn: "",
         firstName: "",
         lastName: "",
     });
@@ -61,7 +60,7 @@ interface Student {
                 color: "green",
             });
             fetchStudents();
-            setNewStudent({ssn: 0, firstName: "", lastName: ""});
+            setNewStudent({ssn: "", firstName: "", lastName: ""});
             closeAddModal();
         } catch (error) {
             console.error("Error adding student:", error);
@@ -131,7 +130,7 @@ interface Student {
      };
 
      const handleOpenAddModal = () => {
-         setNewStudent({ ssn: 0, firstName: "", lastName: "" });
+         setNewStudent({ ssn: "", firstName: "", lastName: "" });
          openAddModal();
      };
     return (
@@ -145,8 +144,8 @@ interface Student {
             <Table striped highlightOnHover withTableBorder>
                 <Table.Thead>
                     <Table.Tr>
-                        <Table.Th>Id</Table.Th>
-                        <Table.Th>SSN</Table.Th>
+                        <Table.Th>Id Student</Table.Th>
+                        <Table.Th>شماره ملی</Table.Th>
                         <Table.Th>نام</Table.Th>
                         <Table.Th>نام خانوادگی</Table.Th>
                         <Table.Th>عملیات</Table.Th>
@@ -183,7 +182,7 @@ interface Student {
                         placeholder="شماره شناسنامه"
                         type="number"
                         value={newStudent.ssn.toString()}
-                        onChange={(e) => setNewStudent({...newStudent, ssn: Number(e.target.value)})}
+                        onChange={(e) => setNewStudent({...newStudent, ssn: (e.target.value)})}
                         required
                     />
                     <TextInput
@@ -217,7 +216,7 @@ interface Student {
                             placeholder="شماره شناسنامه"
                             type="number"
                             value={currentStudent.ssn.toString()}
-                            onChange={(e) => setCurrentStudent({...currentStudent, ssn: Number(e.target.value)})}
+                            onChange={(e) => setCurrentStudent({...currentStudent, ssn: (e.target.value)})}
                             required
                         />
                         <TextInput

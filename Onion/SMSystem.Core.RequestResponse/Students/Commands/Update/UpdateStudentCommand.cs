@@ -7,7 +7,7 @@ namespace SMSystem.Core.RequestResponse.Students.Commands.Update;
 public class UpdateStudentCommand : ICommand, IWebRequest
 {
     public int Id { get; set; }
-    public int SSN { get; set; }
+    public string SSN { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
 
