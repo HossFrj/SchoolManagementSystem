@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SMSystem.Core.Contracts\SMSystem.Core.Contracts.csproj" />
-    <ProjectReference Include="..\SMSystem.Core.Domain\SMSystem.Core.Domain.csproj" />
-    <ProjectReference Include="..\src\3.Infra\Data\Zamin.Infra.Data.Sql.Commands\Zamin.Infra.Data.Sql.Commands.csproj" />
+    <ProjectReference Include="..\..\..\src\3.Infra\Data\Zamin.Infra.Data.Sql.Commands\Zamin.Infra.Data.Sql.Commands.csproj" />
+    <ProjectReference Include="..\..\1.Core\SMSystem.Core.Contracts\SMSystem.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\1.Core\SMSystem.Core.Domain\SMSystem.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

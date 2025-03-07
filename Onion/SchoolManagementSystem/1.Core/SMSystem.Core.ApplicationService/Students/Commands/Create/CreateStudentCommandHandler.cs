@@ -20,8 +20,16 @@ namespace SMSystem.Core.ApplicationService.Students.Commands.Create
             Student studnet = Student.Create(command.SSN, command.FirstName, command.LastName);
 
             await _studentCommandRepository.InsertAsync(studnet);
+            try
+            {
+                await _studentCommandRepository.CommitAsync();
 
-            await _studentCommandRepository.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw new Exception("کد ملی تکراری !!!");
+            }
 
             return Ok(studnet.BusinessId.Value);
         }

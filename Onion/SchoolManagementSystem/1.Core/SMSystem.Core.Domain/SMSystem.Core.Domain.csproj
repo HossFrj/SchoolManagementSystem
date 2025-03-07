@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Zamin.Extensions.Translations.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\2.Core\Zamin.Core.RequestResponse\Zamin.Core.RequestResponse.csproj" />
+    <ProjectReference Include="..\..\..\src\2.Core\Zamin.Core.Domain\Zamin.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

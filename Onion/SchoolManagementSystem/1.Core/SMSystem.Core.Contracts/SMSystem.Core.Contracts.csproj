@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\2.Core\Zamin.Core.Contracts\Zamin.Core.Contracts.csproj" />
     <ProjectReference Include="..\SMSystem.Core.Domain\SMSystem.Core.Domain.csproj" />
     <ProjectReference Include="..\SMSystem.Core.RequestResponse\SMSystem.Core.RequestResponse.csproj" />
-    <ProjectReference Include="..\src\2.Core\Zamin.Core.Contracts\Zamin.Core.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
