@@ -1,5 +1,6 @@
 ﻿using SMSystem.Core.RequestResponse.Students.Queries.Get;
-using SMSystemMiniBlog.Core.Contracts.Blogs.Queries;
+using SMSystem.Core.RequestResponse.Students.Queries.GetAll;
+using SMSystem.Core.Contracts.Students.Queries;
 using Zamin.Core.ApplicationServices.Queries;
 using Zamin.Core.RequestResponse.Queries;
 using Zamin.Utilities;

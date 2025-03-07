@@ -1,4 +1,4 @@
-﻿namespace SMSystem.Infra.Data.Sql.Queries.Common
+﻿namespace SMSystem.Infra.Data.Sql.Queries.OutBoxEvenItem
 {
     public partial class OutBoxEventItem
     {

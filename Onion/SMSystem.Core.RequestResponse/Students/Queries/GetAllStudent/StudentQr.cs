@@ -1,4 +1,4 @@
-﻿namespace SMSystem.Core.RequestResponse.Students.Queries.Get;
+﻿namespace SMSystem.Core.RequestResponse.Students.Queries.GetAll;
 
 public class StudentQr
 {
