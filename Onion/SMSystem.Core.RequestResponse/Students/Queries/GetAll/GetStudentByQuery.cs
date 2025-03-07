@@ -5,7 +5,5 @@ namespace SMSystem.Core.RequestResponse.Students.Queries.Get;
 
 public class GetStudentByQuery : IQuery<List<StudentQr?>>, IWebRequest
 {
-  //  public int Id { get; set; }
-
     public string Path => "/api/Student/Get";
 }
