@@ -1,1 +1,1 @@
-# آشنایی با Zamin
+<img src="SMSystem.gif" />

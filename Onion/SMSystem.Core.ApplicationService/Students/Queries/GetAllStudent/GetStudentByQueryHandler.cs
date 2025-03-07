@@ -5,7 +5,7 @@ using Zamin.Core.ApplicationServices.Queries;
 using Zamin.Core.RequestResponse.Queries;
 using Zamin.Utilities;
 
-namespace SMSystem.Core.ApplicationService.Students.Queries.Get;
+namespace SMSystem.Core.ApplicationService.Students.Queries.GetAllStudent;
 
 public class GetStudentByQueryHandler : QueryHandler<GetStudentByQuery, List<StudentQr?>>
 {

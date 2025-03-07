@@ -1,25 +1,15 @@
-"use client"
+import { JSX, useEffect, useState } from "react";
+import { ActionIcon, Box, Button, Container, Group, Modal, Stack, Table, Text, TextInput } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
+import { IconEdit, IconTrash, IconUserPlus } from "@tabler/icons-react";
+import { studentApi, Student } from "../../../api/Home/Student";
 
-import {JSX, useEffect, useState} from "react";
-import {ActionIcon, Box, Button, Container, Group, Modal, Stack, Table, Text, TextInput} from "@mantine/core";
-import {useDisclosure} from "@mantine/hooks";
-import {notifications} from "@mantine/notifications";
-import {IconEdit, IconTrash, IconUserPlus} from "@tabler/icons-react";
-import axios from "axios";
-
-interface Student {
-    id: number;
-    ssn: string;
-    firstName: string;
-    lastName: string;
-}
-
- const StudentList = () : JSX.Element=> {
+const StudentList = (): JSX.Element => {
     const [students, setStudents] = useState<Student[]>([]);
-
-    const [addModalOpened, {open: openAddModal, close: closeAddModal}] = useDisclosure(false);
-    const [editModalOpened, {open: openEditModal, close: closeEditModal}] = useDisclosure(false);
-    const [deleteModalOpened, {open: openDeleteModal, close: closeDeleteModal}] = useDisclosure(false);
+    const [addModalOpened, { open: openAddModal, close: closeAddModal }] = useDisclosure(false);
+    const [editModalOpened, { open: openEditModal, close: closeEditModal }] = useDisclosure(false);
+    const [deleteModalOpened, { open: openDeleteModal, close: closeDeleteModal }] = useDisclosure(false);
 
     const [newStudent, setNewStudent] = useState<Omit<Student, "id">>({
         ssn: "",
@@ -29,17 +19,15 @@ interface Student {
 
     const [currentStudent, setCurrentStudent] = useState<Student | null>(null);
 
-    const baseUrl = "https://localhost:7075/api/Student";
-
     const fetchStudents = async () => {
         try {
-            const response = await axios.get(`${baseUrl}/Get`);
-            setStudents(response.data);
+            const data = await studentApi.getStudents();
+            setStudents(data);
         } catch (error) {
-            console.error("Error fetching students:", error);
+            console.error("Error:", error);
             notifications.show({
-                title: "خطا در دریافت دانش‌آموزان",
-                message: "مشکلی در دریافت اطلاعات از سرور به وجود آمد.",
+                title: "خطا",
+                message: "مشکلی در دریافت اطلاعات از سرور به وجود آمد",
                 color: "red",
             });
         }
@@ -51,22 +39,20 @@ interface Student {
 
     const handleAddStudent = async () => {
         try {
-            await axios.post(`${baseUrl}/Create`, newStudent, {
-                headers: {"Content-Type": "application/json"}
-            });
+            await studentApi.createStudent(newStudent);
             notifications.show({
                 title: "دانش‌آموز افزوده شد",
-                message: `${newStudent.firstName} ${newStudent.lastName} با موفقیت اضافه شد.`,
+                message: `${newStudent.firstName} ${newStudent.lastName} با موفقیت اضافه شد`,
                 color: "green",
             });
             fetchStudents();
-            setNewStudent({ssn: "", firstName: "", lastName: ""});
+            setNewStudent({ ssn: "", firstName: "", lastName: "" });
             closeAddModal();
         } catch (error) {
-            console.error("Error adding student:", error);
+            console.error("Error:", error);
             notifications.show({
-                title: "خطا در افزودن دانش‌آموز",
-                message: "مشکلی در افزودن دانش‌آموز به وجود آمد.",
+                title: "خطا",
+                message: "مشکلی در افزودن دانش‌آموز به وجود آمد",
                 color: "red",
             });
         }
@@ -75,21 +61,19 @@ interface Student {
     const handleEditStudent = async () => {
         if (!currentStudent) return;
         try {
-            await axios.put(`${baseUrl}/Update`, currentStudent, {
-                headers: {"Content-Type": "application/json"}
-            });
+            await studentApi.updateStudent(currentStudent);
             notifications.show({
                 title: "دانش‌آموز به‌روز شد",
-                message: `${currentStudent.firstName} ${currentStudent.lastName} با موفقیت به‌روز شد.`,
+                message: `${currentStudent.firstName} ${currentStudent.lastName} با موفقیت به‌روز شد`,
                 color: "blue",
             });
             fetchStudents();
             closeEditModal();
         } catch (error) {
-            console.error("Error editing student:", error);
+            console.error("Error:", error);
             notifications.show({
-                title: "خطا در به‌روز‌رسانی دانش‌آموز",
-                message: "مشکلی در به‌روز‌رسانی دانش‌آموز به وجود آمد.",
+                title: "خطا",
+                message: "مشکلی در به‌روزرسانی دانش‌آموز به وجود آمد",
                 color: "red",
             });
         }
@@ -98,26 +82,24 @@ interface Student {
     const handleDeleteStudent = async () => {
         if (!currentStudent) return;
         try {
-            await axios.delete(`${baseUrl}/Delete`, {
-                data: {id: currentStudent.id},
-                headers: {"Content-Type": "application/json"}
-            });
+            await studentApi.deleteStudent(currentStudent.id);
             notifications.show({
                 title: "دانش‌آموز حذف شد",
-                message: `${currentStudent.firstName} ${currentStudent.lastName} با موفقیت حذف شد.`,
+                message: `${currentStudent.firstName} ${currentStudent.lastName} با موفقیت حذف شد`,
                 color: "red",
             });
             fetchStudents();
             closeDeleteModal();
         } catch (error) {
-            console.error("Error deleting student:", error);
+            console.error("Error:", error);
             notifications.show({
-                title: "خطا در حذف دانش‌آموز",
-                message: "مشکلی در حذف دانش‌آموز به وجود آمد.",
+                title: "خطا",
+                message: "مشکلی در حذف دانش‌آموز به وجود آمد",
                 color: "red",
             });
         }
     };
+
 
     const openStudentEditModal = (student: Student) => {
         setCurrentStudent(student);
@@ -175,10 +157,10 @@ interface Student {
                 </Table.Tbody>
             </Table>
 
-            <Modal opened={addModalOpened} onClose={closeAddModal} title="افزودن دانش‌آموز جدید" centered>
+            <Modal dir={'rtl'} opened={addModalOpened} onClose={closeAddModal} title="افزودن دانش‌آموز جدید" centered>
                 <Stack>
                     <TextInput
-                        label="SSN"
+                        label="شماره ملی"
                         placeholder="شماره شناسنامه"
                         type="number"
                         value={newStudent.ssn.toString()}
@@ -208,15 +190,15 @@ interface Student {
                 </Stack>
             </Modal>
 
-            <Modal opened={editModalOpened} onClose={closeEditModal} title="ویرایش دانش‌آموز" centered>
+            <Modal opened={editModalOpened} dir={'rtl'} onClose={closeEditModal} title="ویرایش دانش‌آموز" centered>
                 {currentStudent && (
                     <Stack>
                         <TextInput
-                            label="SSN"
+                            label="شماره ملی"
                             placeholder="شماره شناسنامه"
                             type="number"
                             value={currentStudent.ssn.toString()}
-                            onChange={(e) => setCurrentStudent({...currentStudent, ssn: (e.target.value)})}
+                            onChange={(e) => setCurrentStudent({ ...currentStudent, ssn: (e.target.value) })}
                             required
                         />
                         <TextInput
@@ -243,7 +225,7 @@ interface Student {
                 )}
             </Modal>
 
-            <Modal opened={deleteModalOpened} onClose={closeDeleteModal} title="حذف دانش‌آموز" centered>
+            <Modal dir={'rtl'} opened={deleteModalOpened} onClose={closeDeleteModal} title="حذف دانش‌آموز" centered>
                 <Box p="md">
                     <Text>آیا مطمئن هستید که می‌خواهید این دانش‌آموز را حذف کنید؟</Text>
                     <Text fw={700} mt="xs">

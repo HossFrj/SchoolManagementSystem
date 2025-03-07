@@ -1,25 +1,17 @@
-import React, {JSX, useEffect, useState} from "react";
-import { Container, Table} from "@mantine/core";
-import {notifications} from "@mantine/notifications";
-import axios from "axios";
+import  { JSX, useEffect, useState } from "react";
+import { Container, Table } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { logApi, Log } from "../../../api/Home/Log";
 
-interface Student {
-    outBoxEventItemId: number;
-    accuredOn:  React.ReactNode;
-    aggregateName: string;
-    eventName: string;
-}
+const LogList = (): JSX.Element => {
+    const [logs, setLogs] = useState<Log[]>([]);
 
-const LogList = () : JSX.Element=> {
-    const [logs, setLogs] = useState<Student[]>([]);
-    const baseUrl = "https://localhost:7075/api/OutBoxEventItem";
-
-    const fetchStudents = async () => {
+    const fetchLogs = async () => {
         try {
-            const response = await axios.get(`${baseUrl}/Get`);
-            setLogs(response.data);
+            const data = await logApi.getLogs();
+            setLogs(data);
         } catch (error) {
-            console.error("Error fetching students:", error);
+            console.error("Error fetching logs:", error);
             notifications.show({
                 title: "خطا در دریافت لاگ ها",
                 message: "مشکلی در دریافت اطلاعات از سرور به وجود آمد.",
@@ -29,11 +21,9 @@ const LogList = () : JSX.Element=> {
     };
 
     useEffect(() => {
-        fetchStudents();
+        fetchLogs();
     }, []);
 
-
-  
     return (
         <Container fluid>
             <Table striped highlightOnHover withTableBorder mt={50}>
@@ -56,10 +46,8 @@ const LogList = () : JSX.Element=> {
                     ))}
                 </Table.Tbody>
             </Table>
-
-           
-
         </Container>
     );
-}
+};
+
 export default LogList;
