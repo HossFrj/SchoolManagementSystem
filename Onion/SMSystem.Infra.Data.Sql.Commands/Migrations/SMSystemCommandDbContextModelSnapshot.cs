@@ -57,9 +57,12 @@ namespace SMSystem.Infra.Data.Sql.Commands.Migrations
 
                     b.Property<string>("SSN")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SSN")
+                        .IsUnique();
 
                     b.ToTable("Students");
                 });

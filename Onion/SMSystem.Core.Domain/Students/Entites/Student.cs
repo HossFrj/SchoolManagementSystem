@@ -1,11 +1,14 @@
-﻿using SMSystem.Core.Domain.Students.Events;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.Core.Domain.Students.Events;
 using System.ComponentModel.DataAnnotations;
 using Zamin.Core.Domain.Entities;
 
 namespace SMSystem.Core.Domain.Students.Entites
 {
+    [Index(nameof(SSN), IsUnique = true)]
     public class Student : AggregateRoot<int>
     {
+
         #region Properties
         [Required]
         public string SSN { get; set; } = string.Empty;
