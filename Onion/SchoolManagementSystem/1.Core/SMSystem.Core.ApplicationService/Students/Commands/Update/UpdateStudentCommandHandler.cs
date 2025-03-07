@@ -25,14 +25,16 @@ public sealed class UpdateStudentCommandHandler : CommandHandler<UpdateStudentCo
             throw new InvalidEntityStateException("کربر یافت نشد");
 
         studnet.Update(command.SSN, command.FirstName, command.LastName);
+
         try
         {
             await _studentCommandRepository.CommitAsync();
+
         }catch(Exception e)
         {
-            Console.WriteLine(e.Message);
-            throw new Exception("کد ملی تکراری !!!");
-        }
+            Console.WriteLine(e);
+            throw new InvalidEntityStateException("کد ملی تکراری !!!");   
+        };
 
         return Ok();
     }
