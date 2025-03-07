@@ -7,9 +7,11 @@ namespace SMSystem.APP.Server.OutBoxEventItem
     [Route("api/[controller]")]
     public class OutBoxEventItemController : BaseController
     {
-        #region Commands
+        #region Queries
+
         [HttpGet("Get")]
         public async Task<IActionResult> GetAllOutBoxEventItems(GetOutBoxEventItemByQuery query) => await Query<GetOutBoxEventItemByQuery, List<OutBoxEventItemQr?>>(query);
+
         #endregion
     }
 }

@@ -21,10 +21,14 @@ namespace SMSystem.APP.Server.Suedents
         [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteStudent([FromBody] DeleteStudentCommand command) => await Delete(command);
 
-        [HttpGet("Get")]
-        public async Task<IActionResult> GetAllStudents(GetStudentByQuery query) => await Query<GetStudentByQuery, List<StudentQr?>>(query);
+
         #endregion
 
+        #region Queries
 
+        [HttpGet("Get")]
+        public async Task<IActionResult> GetAllStudents(GetStudentByQuery query) => await Query<GetStudentByQuery, List<StudentQr?>>(query);
+
+        #endregion
     }
 }
